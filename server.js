@@ -71,17 +71,13 @@ app.post('/address',async(req,res)=>{
 
 app.post('/login', async(req,res) => { 
     const {email, password}= req.body;
-    console.log(email)
-    console.log(password)
     const user1 = await user.findOne({where: {email: email}});
    
     if(user1!=null) {
         bcrypt.compare(password, user1.password).then(ValidUser => {
             if(ValidUser){
                 const jwtToken  = authToken.generateJwt(user1)
-                console.log(jwtToken)
                 const refreshToken  = refreshtoken.generateRefreshToken(user1)
-                console.log(refreshToken)
                 return  res.status(200).json({ authToken: jwtToken,refreshToken:refreshToken})
             }
               
@@ -106,28 +102,9 @@ app.get('/hotelData/:category', async(req,res) => {
     res.status(404).error(err)  
 })
 
-// app.post('/hoteldata/addhotel', async(req,res) => {
-
-//     const {hotelName,categoryId , categoryType} = req.body;
-
-//     const checkHotel = (await hotelDb.findOne({ where: {hotelName: hotelName} }))? true:false;
-
-//     if(checkHotel) {
-//         const disp = await hotelDb.findAll();
-//         res.send(disp);
-//     }
-//     else { 
-//         const UserData = await hotelDb.create({hotelName:hotelName, categoryId:categoryId, 
-//             categoryType:categoryType});
-//         const disp = await hotelDb.findAll();
-//         res.send(disp);
-//     } 
-
-// })
 
 app.get('/:category/:hotelName', async(req,res) => { 
     const hotelMenu = await menuDb.findAll({where:{category: req.params.category,hotelName: req.params.hotelName}});
-    // console.log(hotelMenu)
     if(hotelMenu!=null)
     res.status(200).send(hotelMenu);
     else

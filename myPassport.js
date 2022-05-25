@@ -7,11 +7,11 @@ const user = require('./models/user')
 require('dotenv').config();
 
 authBody.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-authBody.secretOrKey = process.env.secret;
+authBody.secretOrKey = "secret";
 
 passport.use('token',new JWTStrategy({
     jwtFromRequest : ExtractJwt.fromAuthHeaderAsBearerToken(),
-    secretOrKey : process.env.secret
+    secretOrKey :"secret"
 },async (jwtPayload,done)=>{
     return await user.findOne({where:{id:jwtPayload.sub}})
                 .then(user=>{
@@ -24,7 +24,7 @@ passport.use('token',new JWTStrategy({
 ))
 passport.use('refresh',new JWTStrategy({
     jwtFromRequest : ExtractJwt.fromAuthHeaderAsBearerToken(),
-    secretOrKey : process.env.secret
+    secretOrKey : "secret"
 },async (jwtPayload,done)=>{
     return await user.findOne({where:{id:jwtPayload.sub}})
                 .then(user=>{

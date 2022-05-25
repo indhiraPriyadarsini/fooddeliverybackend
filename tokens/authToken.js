@@ -8,7 +8,7 @@ generateJwt = user1 => {
         sub: user1.id,
         iat: new Date().getTime(),
         expiresIn:'5m'
-    },process.env.SECRET);
+    },"secret");
 }
 
 module.exports ={generateJwt} ;

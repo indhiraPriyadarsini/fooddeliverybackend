@@ -8,7 +8,7 @@ generateRefreshToken = user1 => {
         sub: user1.id,
         iat: new Date().getTime(),
         expiresIn:'1d'
-    },process.env.SECRET);
+    },"secret");
 }
 
 module.exports ={generateRefreshToken} ;
