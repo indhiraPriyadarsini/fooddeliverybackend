@@ -2,6 +2,11 @@ const {DataTypes} = require('sequelize');
 const db = require('../config/db-config')
 
 const deliveryAddress = db.define('deliveryaddress',{
+    user_id:{
+        type: DataTypes.INTEGER,
+        // autoIncrement: true,
+        primaryKey: true
+    },
     doorNo:{
         type: DataTypes.INTEGER,
         required: true

@@ -20,7 +20,7 @@
     "nodemon": "^2.0.16"
   },
   "scripts": {
-    "dev": "concurrently \"nodemon ./config/db-config\" \"nodemon server\" \"nodemon passport\" \"nodemon ./models/user.js\" \"nodemon ./models/addAddress.js\" \"nodemon ./models/user.js\" \"nodemon ./models/category.js\"",
+    "dev": "concurrently \"nodemon ./config/db-config\" \"nodemon server\"  \"nodemon ./models/user.js\" \"nodemon myPassport.js\" \"nodemon ./models/addAddress.js\" \"nodemon ./models/user.js\" \"nodemon ./models/category.js\"",
     "start": "node server.js"
   },
   "name": "db_connect",

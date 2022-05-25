@@ -19,6 +19,11 @@ const hotelData = db.define('hoteldata',{
         type: DataTypes.STRING,
         required: true
     },
+    hotelUrl:{
+        type: DataTypes.STRING,
+        required: true
+
+    }
 });
 
 module.exports = hotelData;

@@ -1,31 +1,25 @@
 const {DataTypes} = require('sequelize');
 const db = require('../config/db-config')
 
-const menuDb = db.define('menudb',{
-
-    id:{
-        
+const admin = db.define('admin',{
+    admin_id:{
         type: DataTypes.INTEGER,
+        autoIncrement: true,
         primaryKey: true
     },
-    hotelName:{
+    username:{
         type: DataTypes.STRING,
-        required: true
+        unique:true,
     },
-    dishes:{  
+    email:{
         type: DataTypes.STRING,
-        required: true
+        unique:true,
+        
     },
-    price:{
-        type: DataTypes.INTEGER,
-        required: true
-    },
-    category:{
+    password:{
         type: DataTypes.STRING,
-        required: true
-
+        notEmpty:true
     }
-
 });
 
-module.exports = menuDb;
+module.exports = admin
